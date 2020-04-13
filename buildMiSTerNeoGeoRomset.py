@@ -244,7 +244,7 @@ def generate_romsets_info(folder, software_list):
 			else:
 				size = rom.get('size')
 
-			if not re.search(".neo-sma$", rom.get('name')):
+			if not re.search("neo-sma$", rom.get('name')):
 				ET.SubElement(romset, 'file', attrib={	'name': rom.get('name'),
 														'type': altered_rom_type.get(rom['type']),
 														'index': "{0:d}".format(index),
@@ -264,7 +264,7 @@ def generate_romsets_info(folder, software_list):
 
 		# Check neo-sma
 		for rom in rom_cpu_list:
-			if re.search(".neo-sma$", rom.get('name')):
+			if re.search("neo-sma$", rom.get('name')):
 				size = rom.get('size')
 				ET.SubElement(romset, 'file', attrib={	'name': rom.get('name'),
 														'type': altered_rom_type.get(rom['type']),
