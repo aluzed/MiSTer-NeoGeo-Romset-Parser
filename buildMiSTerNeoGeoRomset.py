@@ -185,30 +185,6 @@ def get_ymsnd_index_by_offset(offset):
 
 	return index
 
-def get_maincpu_index_by_offset(offset):
-	index = 4
-
-	if offset == "0x0c0000":
-		index = 2
-	elif offset == "0x000000":
-		index = 4
-	elif offset == "0x100000":
-		index = 6
-	elif offset == "0x200000":
-		index = 8
-	elif offset == "0x300000":
-		index = 10
-	elif offset == "0x300000":
-		index = 12
-	elif offset == "0x500000":
-		index = 14
-	elif offset == "0x700000":
-		index = 16
-	elif offset == "0x800000":
-		index = 18
-	
-	return index
-
 def generate_romsets_info(folder, software_list):
 	if not os.path.exists(folder):
 		os.makedirs(folder)
@@ -255,25 +231,48 @@ def generate_romsets_info(folder, software_list):
 			concatenate = True
 
 		# maincpu rom files
+		index = 4
 		for rom in rom_cpu_list:
-			index = get_maincpu_index_by_offset(rom.get('offset'))
+			offs = rom.get('offset')
+
+			if offs is None or index > 4:
+				offs = "0"
 
 			if concatenate is True:
 				size = "{0:#x}".format(rom_size)
 			else:
 				size = rom.get('size')
+
 			ET.SubElement(romset, 'file', attrib={	'name': rom.get('name'),
 													'type': altered_rom_type.get(rom['type']),
 													'index': "{0:d}".format(index),
-													'offset': "0",
+													'offset': offs,
 													'size': size})
-			if index == 2 or concatenate is True:
-				break
+			
+			# if index == 2 or concatenate is True:
+			# 	break
+
+			if int(rom.get('offset'), 16) > 0 and index == 4:
+				index += 2
+				ET.SubElement(romset, 'file', attrib={	'name': rom.get('name'),
+													'type': altered_rom_type.get(rom['type']),
+													'index': "{0:d}".format(index),
+													'offset': '0',
+													'size': size})
+				
 			index += 2
 
+
+		if index < 8:
+			index = 8
+
 		# fixed rom files
-		index = 8
 		for rom in rom_fix_list:
+			offset = int(rom.get('offset'), 16)
+
+			if offset > 0:
+				index += int(offset / 1024 / 1024)	
+
 			ET.SubElement(romset, 'file', attrib={	'name': rom.get('name'),
 													'type': altered_rom_type.get(rom['type']),
 													'index': "{0:d}".format(index),
