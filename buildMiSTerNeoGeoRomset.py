@@ -191,7 +191,7 @@ def generate_romsets_info(folder, software_list):
 		os.makedirs(folder)
 
 	romsets = ET.Element('romsets')
-	altered_rom_type = {'maincpu':'P', 'fixed':'S', 'audiocpu': 'M', 'ymsnd': 'V', 'sprites': 'C'}
+	altered_rom_type = {'maincpu':'P', 'fixed':'S', 'audiocrypt': 'M', 'audiocpu': 'M', 'ymsnd': 'V', 'sprites': 'C'}
 
 	for entry in software_list:
 		romset = ET.SubElement(romsets, 'romset')
@@ -213,7 +213,7 @@ def generate_romsets_info(folder, software_list):
 				rom_fix_list.append(rom)
 			elif rom['type'] == "sprites" and rom['flag'] is False:
 				rom_spr_list.append(rom)
-			elif rom['type'] == "audiocpu":
+			elif rom['type'] == "audiocpu" or rom['type'] == "audiocrypt":
 				rom_audiocpu_list.append(rom)
 			elif rom['type'] == "ymsnd":
 				rom_ymsnd_list.append(rom)
