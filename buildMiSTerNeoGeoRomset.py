@@ -5,6 +5,7 @@
 #-------------------------------------------------------------------------------
 
 import os
+import re
 import argparse
 import zipfile
 import xml.etree.ElementTree as ET
@@ -243,25 +244,32 @@ def generate_romsets_info(folder, software_list):
 			else:
 				size = rom.get('size')
 
-			ET.SubElement(romset, 'file', attrib={	'name': rom.get('name'),
-													'type': altered_rom_type.get(rom['type']),
-													'index': "{0:d}".format(index),
-													'offset': offs,
-													'size': size})
-			
-			# if index == 2 or concatenate is True:
-			# 	break
-
-			if int(rom.get('offset'), 16) > 0 and index == 4:
-				index += 2
+			if not re.search(".neo-sma$", rom.get('name')):
 				ET.SubElement(romset, 'file', attrib={	'name': rom.get('name'),
-													'type': altered_rom_type.get(rom['type']),
-													'index': "{0:d}".format(index),
-													'offset': '0',
-													'size': size})
+														'type': altered_rom_type.get(rom['type']),
+														'index': "{0:d}".format(index),
+														'offset': offs,
+														'size': size})
 				
-			index += 2
+				# If the first block has an offset, duplicate the line
+				if int(rom.get('offset'), 16) > 0 and index == 4:
+					index += 2
+					ET.SubElement(romset, 'file', attrib={	'name': rom.get('name'),
+														'type': altered_rom_type.get(rom['type']),
+														'index': "{0:d}".format(index),
+														'offset': '0',
+														'size': size})
+					
+				index += 2
 
+		# Check neo-sma
+		for rom in rom_cpu_list:
+			if re.search(".neo-sma$", rom.get('name')):
+				size = rom.get('size')
+				ET.SubElement(romset, 'file', attrib={	'name': rom.get('name'),
+														'type': altered_rom_type.get(rom['type']),
+														'index': '',
+														'size': size})
 
 		if index < 8:
 			index = 8
@@ -302,9 +310,6 @@ def generate_romsets_info(folder, software_list):
 			rom_offs = rom.get('offset')
 			offset = int(rom_offs, 16)
 			index = 9
-			
-			if offset & 1 != 0:
-				index += int(offset / 1024 / 1024) 
 
 			ET.SubElement(romset, 'file', attrib={	'name': rom.get('name'),
                                                 'type': altered_rom_type.get(rom['type']),
