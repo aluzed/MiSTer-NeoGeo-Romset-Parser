@@ -41,7 +41,6 @@ encrypted_roms = {
   "kof2k4se": "kof2k3nd",  # Kof 2004 spe hack
   "kof10th": "kof2k3nd",  # Kof 10th anniversary hack
   "kf10thep": "kof2k3nd",  # Kof 10th anniversary extra plus hack
-  "kf10thep": "kof2k3nd",  # Kof 10th anniversary extra plus hack
   "svc": "svcnd", # SNK vs Capcom
   "svcpcb": "svcnd", # SNK vs Capcom Jamma
   "svcpcba": "svcnd", # SNK vs Capcom Jamma set 2
@@ -55,7 +54,6 @@ encrypted_roms = {
   "samsh5sp": "samsh5nd",  # Samurai Shodown 5 Spe
   "samsh5spho": "samsh5nd",  # Samurai Shodown 5 Spe alt
   "samsh5sph": "samsh5nd",  # Samurai Shodown 5 Spe less censored
-  "samsh5sph": "samsh5nd",  # Samurai Shodown 5 Spe less censored
   "rotd": "rotdnd",  # Rage of the dragons initial
   "rotdh": "rotdnd",  # Rage of the dragons alt
   "mslug3": "mslug3nd",  # Metal Slug 3 initial
@@ -67,7 +65,6 @@ encrypted_roms = {
   "ms5pcb": "mslug5nd",  # Metal Slug 5 Jamma
   "mslug4": "mslug4nd",  # Metal Slug 4 initial
   "ms4plus": "mslug4nd",  # Metal Slug 4 plus hack
-  "mslug4h": "mslug4nd",  # Metal Slug 4 set 2
   "mslug4h": "mslug4nd",  # Metal Slug 4 set 2
   "matrim": "matrimnd",  # Matrimele initial
   "matrimbl": "matrimnd",  # Matrimele bootleg
@@ -260,7 +257,7 @@ def generate_romsets_info(folder, software_list):
 
 		for rom in rom_list:
 			if rom['type'] == "title":
-				romset.set('altname', rom['name'])
+				romset.set('altname', rom['name'].strip())
 			if rom['type'] == "maincpu":
 				rom_cpu_list.append(rom)
 			elif rom['type'] == "fixed":
@@ -382,7 +379,7 @@ def generate_romsets_info(folder, software_list):
                                                 'size': rom.get('size')})
             
 
-	xml_str = minidom.parseString(ET.tostring(romsets)).toprettyxml(indent="    ", encoding='utf8')
+	xml_str = minidom.parseString(ET.tostring(romsets)).toprettyxml(indent="	", encoding='utf8')
 	xml_path = os.path.join(folder, "romsets.xml")
 
 	f = open(xml_path, "w")
