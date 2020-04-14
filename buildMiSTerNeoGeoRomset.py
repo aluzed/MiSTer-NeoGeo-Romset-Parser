@@ -190,7 +190,7 @@ def get_sprite_index_by_offset(offset):
 
   allowed_offset = {
     '0x000000': 64,
-    '0x000001': 64,
+    '0x000001': 65,
     '0x200000': 68,
     '0x200001': 69,
     '0x400000': 72,
@@ -210,14 +210,13 @@ def get_sprite_index_by_offset(offset):
   }
 
   index = 9999
-  
-  if offset in allowed_offset: 
-		index = allowed_offset[offset]
+	
+  if offset in allowed_offset:
+    index = allowed_offset[offset]
 
-	return index
+  return index
 
 def get_ymsnd_index_by_offset(offset):
-
   allowed_offset = {
     '0x000000': 16,
     '0x100000': 18,
@@ -239,7 +238,7 @@ def get_ymsnd_index_by_offset(offset):
   if offset in allowed_offset:
     index = allowed_offset[offset]
 
-	return index
+  return index
 
 def generate_romsets_info(folder, software_list):
 	if not os.path.exists(folder):

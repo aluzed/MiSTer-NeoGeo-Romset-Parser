@@ -8019,6 +8019,53 @@
 		</part>
 	</software>
 
+	<software name="garoun" cloneof="garou">
+		<description>Garou - Mark of the Wolves (NGM-2530)</description>
+		<year>1999</year>
+		<publisher>SNK</publisher>
+		<info name="serial" value="NGM-2530"/>
+		<info name="release" value="19991126"/>
+		<info name="alt_title" value="餓狼"/>
+		<sharedfeat name="release" value="MVS,AES" />
+		<sharedfeat name="compatibility" value="MVS,AES" />
+		<part name="cart" interface="neo_cart">
+			<!-- later revision -->
+			<feature name="slot" value="sma_garou" />
+			<dataarea name="maincpu" width="16" endianness="big" size="0x900000">
+				<rom loadflag="load16_word_swap" name="kf.neo-sma" offset="0x0c0000" size="0x040000" crc="98bc93dc" sha1="01fe3d18b50f770e131e8d8eeff4c630ba8c9551" />
+				<!-- stored in the custom chip -->
+				<rom loadflag="load16_word_swap" name="253-ep1.p1" offset="0x100000" size="0x200000" crc="ea3171a4" sha1="bbda40f652baa0dc5fc6a006c001a1bdb0df43f6" />  <!-- M27C160 -->
+				<rom loadflag="load16_word_swap" name="253-ep2.p2" offset="0x300000" size="0x200000" crc="382f704b" sha1="0ace9c84a8b8a0524fd9a503e7d872de1bf1bd52" />  <!-- M27C160 -->
+				<rom loadflag="load16_word_swap" name="253-ep3.p3" offset="0x500000" size="0x200000" crc="e395bfdd" sha1="6b50f5ac15bf66b7e4e9bff57594fd3d7530c831" />  <!-- M27C160 -->
+				<rom loadflag="load16_word_swap" name="253-ep4.p4" offset="0x700000" size="0x200000" crc="da92c08e" sha1="5556f983ebcebc33160e90a6a6cf589d54c8cedc" />  <!-- M27C160 -->
+			</dataarea>
+			<dataarea name="fixed" size="0x80000">
+				<!-- The Encrypted Boards do _not_ have an s1 rom, data for it comes from the Cx ROMs -->
+				<rom value="0" size="0x80000" offset="0x000000" loadflag="fill" />
+			</dataarea>
+			<dataarea name="audiocpu" size="0x040000">
+				<rom offset="0x000000" size="0x040000" name="253-m1.m1" crc="36a806be" sha1="90fb44dc0c3fb57946a0f35716056abb84a0f191" />   <!-- TC532000 -->
+			</dataarea>
+			<dataarea name="ymsnd" size="0x1000000">
+				<rom name="253-v1.v1" offset="0x000000" size="0x400000" crc="263e388c" sha1="11f05feee170370c4bfc5053af79246a6e3de5dc" />   <!-- TC5332204 -->
+				<rom name="253-v2.v2" offset="0x400000" size="0x400000" crc="2c6bc7be" sha1="c9c61054ce1a47bf1bf77a31117726b499df24a4" />   <!-- TC5332204 -->
+				<rom name="253-v3.v3" offset="0x800000" size="0x400000" crc="0425b27d" sha1="986863c98fc3445487242dcf2ea75b075e7f33ee" />   <!-- TC5332204 -->
+				<rom name="253-v4.v4" offset="0xc00000" size="0x400000" crc="a54be8a9" sha1="d7123e79b43e8adfaa5ecadbfcbeb6be890ec311" />   <!-- TC5332204 -->
+			</dataarea>
+			<dataarea name="sprites" size="0x4000000">
+				<!-- Encrypted -->
+				<rom loadflag="load16_byte" name="motwn_c1.rom" offset="0x000000" size="0x800000" crc="0603e046" sha1="5ef4557ce90ba65d36129de97be1fdc049c4a3d0" />    <!-- TC5364205 -->
+				<rom loadflag="load16_byte" name="motwn_c2.rom" offset="0x000001" size="0x800000" crc="0917d2a4" sha1="d4ed3a13ae22f880fb399671c1752f1a0283f316" />    <!-- TC5364205 -->
+				<rom loadflag="load16_byte" name="motwn_c3.rom" offset="0x1000000" size="0x800000" crc="6737c92d" sha1="678f0c9cc1267bd131546981b9989bfb7289d8ba" />   <!-- TC5364205 -->
+				<rom loadflag="load16_byte" name="motwn_c4.rom" offset="0x1000001" size="0x800000" crc="5ba92ec6" sha1="aae36b050a3a0321026a96eba06dd184c0e2acca" />   <!-- TC5364205 -->
+				<rom loadflag="load16_byte" name="motwn_c5.rom" offset="0x2000000" size="0x800000" crc="3eab5557" sha1="47c433015aa81a0b0a1d3ee51382c4948b80c023" />   <!-- TC5364205 -->
+				<rom loadflag="load16_byte" name="motwn_c6.rom" offset="0x2000001" size="0x800000" crc="308d098b" sha1="b052f1fa9fbc69606004c250e2505360eaa24949" />   <!-- TC5364205 -->
+				<rom loadflag="load16_byte" name="motwn_c7.rom" offset="0x3000000" size="0x800000" crc="c0e995ae" sha1="8675ca787d28246174c313167f82557f021366fc" />   <!-- TC5364205 -->
+				<rom loadflag="load16_byte" name="motwn_c8.rom" offset="0x3000001" size="0x800000" crc="21a11303" sha1="fd61221ad257c185ef5c1f9694bd6b840b591af3" />   <!-- TC5364205 -->
+			</dataarea>
+		</part>
+	</software>
+
 	<software name="garouh" cloneof="garou">
 		<description>Garou - Mark of the Wolves (NGM-2530 ~ NGH-2530)</description>
 		<year>1999</year>
@@ -8298,6 +8345,50 @@
 		</part>
 	</software>
 
+	<software name="mslug3nd" cloneof="mslug3">
+		<description>Metal Slug 3 (NGM-2560)</description>
+		<year>2000</year>
+		<publisher>SNK</publisher>
+		<info name="serial" value="NGM-2560"/>
+		<info name="release" value="20000323"/>
+		<info name="alt_title" value="メタルスラッグ 3"/>
+		<sharedfeat name="release" value="MVS" />
+		<sharedfeat name="compatibility" value="MVS,AES" />
+		<part name="cart" interface="neo_cart">
+			<!-- revision 2000.4.1 -->
+			<feature name="slot" value="sma_mslug3" />
+			<dataarea name="maincpu" width="16" endianness="big" size="0x900000">
+				<!-- stored in the custom chip -->
+				<rom loadflag="load16_word_swap" name="256-ph1.bin" offset="0x100000" size="0x100000" crc="b07edfd5" sha1="dcbd9e500bfae98d754e55cdbbbbf9401013f8ee" />  <!-- TC5332202 -->
+				<rom loadflag="load16_word_swap" name="256-ph2.bin" offset="0x500000" size="0x400000" crc="6097c26b" sha1="248ec29d21216f29dc6f5f3f0e1ad1601b3501b6" />  <!-- TC5332202 -->
+			</dataarea>
+			<dataarea name="fixed" size="0x80000">
+				<!-- The Encrypted Boards do _not_ have an s1 rom, data for it comes from the Cx ROMs -->
+				<rom value="0" size="0x80000" offset="0x000000" loadflag="fill" />
+			</dataarea>
+			<dataarea name="audiocpu" size="0x080000">
+				<rom offset="0x000000" size="0x080000" name="256-m1.m1" crc="eaeec116" sha1="54419dbb21edc8c4b37eaac2e7ad9496d2de037a" />   <!-- mask rom TC534000 -->
+			</dataarea>
+			<dataarea name="ymsnd" size="0x1000000">
+				<rom name="256-v1.v1" offset="0x000000" size="0x400000" crc="f2690241" sha1="fd56babc1934d10e0d27c32f032f9edda7ca8ce9" />   <!-- TC5332204 -->
+				<rom name="256-v2.v2" offset="0x400000" size="0x400000" crc="7e2a10bd" sha1="0d587fb9f64cba0315ce2d8a03e2b8fe34936dff" />   <!-- TC5332204 -->
+				<rom name="256-v3.v3" offset="0x800000" size="0x400000" crc="0eaec17c" sha1="c3ed613cc6993edd6fc0d62a90bcd85de8e21915" />   <!-- TC5332204 -->
+				<rom name="256-v4.v4" offset="0xc00000" size="0x400000" crc="9b4b22d4" sha1="9764fbf8453e52f80aa97a46fb9cf5937ef15a31" />   <!-- TC5332204 -->
+			</dataarea>
+			<dataarea name="sprites" size="0x4000000">
+				<!-- Encrypted -->
+				<rom loadflag="load16_byte" name="ms3n_c1.rom" offset="0x000000" size="0x800000" crc="5a79c34e" sha1="b8aa51fa50935cae62ab3d125b723ab888691e60" />    <!-- TC5364205 -->
+				<rom loadflag="load16_byte" name="ms3n_c2.rom" offset="0x000001" size="0x800000" crc="944c362c" sha1="3843ab300f956280475469caee70135658f67089" />    <!-- TC5364205 -->
+				<rom loadflag="load16_byte" name="ms3n_c3.rom" offset="0x1000000" size="0x800000" crc="6e69d36f" sha1="94e8cf42e999114b4bd8b30e0aa2f365578c4c9a" />   <!-- TC5364205 -->
+				<rom loadflag="load16_byte" name="ms3n_c4.rom" offset="0x1000001" size="0x800000" crc="b755b4eb" sha1="804700a0966a48f130c434ede3f970792ea74fa5" />   <!-- TC5364205 -->
+				<rom loadflag="load16_byte" name="ms3n_c5.rom" offset="0x2000000" size="0x800000" crc="7aacab47" sha1="312c1c9846175fe1a3cad51d5ae230cf674fc93d" />   <!-- TC5364205 -->
+				<rom loadflag="load16_byte" name="ms3n_c6.rom" offset="0x2000001" size="0x800000" crc="c698fd5d" sha1="16818883b06849ba2f8d61bdd5e21aaf99bd8408" />   <!-- TC5364205 -->
+				<rom loadflag="load16_byte" name="ms3n_c7.rom" offset="0x3000000" size="0x800000" crc="cfceddd2" sha1="7def666adf8bd1703f40c61f182fc040b6362dc9" />   <!-- TC5364205 -->
+				<rom loadflag="load16_byte" name="ms3n_c8.rom" offset="0x3000001" size="0x800000" crc="4d9be34c" sha1="a737bdfa2b815aea7067e7af2636e83a9409c414" />   <!-- TC5364205 -->
+			</dataarea>
+		</part>
+	</software>
+
 <software name="mslug3a" cloneof="mslug3"> <!-- see neogeo.cpp for notes on this set -->
 		<description>Metal Slug 3 (NGM-2560, earlier)</description>
 		<year>2000</year>
@@ -8484,6 +8575,48 @@
 		</part>
 	</software>
 
+	<software name="kof2knd" cloneof="kof2000">
+		<description>The King of Fighters 2000</description>
+		<year>2000</year>
+		<publisher>SNK</publisher>
+		<info name="serial" value="NGM-2570 (MVS), NGH-2570 (AES)"/>
+		<info name="release" value="20000726 (MVS), 20001221 (AES)"/>
+		<info name="alt_title" value="ザ・キング・オブ・ファイターズ 2000"/>
+		<sharedfeat name="release" value="MVS,AES" />
+		<sharedfeat name="compatibility" value="MVS,AES" />
+		<part name="cart" interface="neo_cart">
+			<feature name="slot" value="sma_kof2k" />
+			<dataarea name="maincpu" width="16" endianness="big" size="0x900000">
+				<!-- stored in the custom chip -->
+				<rom loadflag="load16_word_swap" name="257-p1n.bin" offset="0x100000" size="0x400000" crc="60947b4c" sha1="5faa0a7ac7734d6c8e276589bd12dd574264647d" />   <!-- mask rom TC5332202 -->
+				<rom loadflag="load16_word_swap" name="257-p2n.bin" offset="0x500000" size="0x400000" crc="1b7ec415" sha1="f19fa44e9ee5b5a6eb4a051349d6bc4acc3bbbdb" />   <!-- mask rom TC5332202 -->
+			</dataarea>
+			<dataarea name="fixed" size="0x80000">
+				<!-- The Encrypted Boards do _not_ have an s1 rom, data for it comes from the Cx ROMs -->
+				<rom value="0" size="0x80000" offset="0x000000" loadflag="fill" />
+			</dataarea>
+				<!-- Encrypted -->
+			<dataarea name="audiocrypt" size="0x80000">
+				<rom offset="0x00000" size="0x40000" name="257-m1.m1" crc="4b749113" sha1="2af2361146edd0ce3966614d90165a5c1afb8de4" /> <!-- mask rom TC532000 -->
+			</dataarea>
+			<dataarea name="ymsnd" size="0x1000000">
+				<rom name="257-v1.v1" offset="0x000000" size="0x400000" crc="17cde847" sha1="4bcc0205b70dc6d9216b29025450c9c5b08cb65d" />   <!-- TC5332204 -->
+				<rom name="257-v2.v2" offset="0x400000" size="0x400000" crc="1afb20ff" sha1="57dfd2de058139345ff2b744a225790baaecd5a2" />   <!-- TC5332204 -->
+				<rom name="257-v3.v3" offset="0x800000" size="0x400000" crc="4605036a" sha1="51b228a0600d38a6ec37aec4822879ec3b0ee106" />   <!-- TC5332204 -->
+				<rom name="257-v4.v4" offset="0xc00000" size="0x400000" crc="764bbd6b" sha1="df23c09ca6cf7d0ae5e11ff16e30c159725106b3" />   <!-- TC5332204 -->
+			</dataarea>
+			<dataarea name="sprites" size="0x4000000">
+				<rom loadflag="load16_byte" name="kof2k_c1.rom" offset="0x000000" size="0x800000" crc="cef1cdfa" sha1="6135080f3a6b4712b76cc217edcc58e72b55c2b9" />    <!-- TC5364205 -->
+				<rom loadflag="load16_byte" name="kof2k_c2.rom" offset="0x000001" size="0x800000" crc="f7bf0003" sha1="9f7b19a2100cf7d12867e742f440dd5277b4f895" />    <!-- TC5364205 -->
+				<rom loadflag="load16_byte" name="kof2k_c3.rom" offset="0x1000000" size="0x800000" crc="101e6560" sha1="8073ae1139e215d1167f8d32c14079a46ce3ee1c" />   <!-- TC5364205 -->
+				<rom loadflag="load16_byte" name="kof2k_c4.rom" offset="0x1000001" size="0x800000" crc="bd2fc1b1" sha1="da0006761923ad49b404a08d7a151193ee307a69" />   <!-- TC5364205 -->
+				<rom loadflag="load16_byte" name="kof2k_c5.rom" offset="0x2000000" size="0x800000" crc="89775412" sha1="b221b30224bc4239f1b3c2d2fd1cd4fa84e3523c" />   <!-- TC5364205 -->
+				<rom loadflag="load16_byte" name="kof2k_c6.rom" offset="0x2000001" size="0x800000" crc="fa7200d5" sha1="6f2b0d38af34e280d56a58955400e5c679906871" />   <!-- TC5364205 -->
+				<rom loadflag="load16_byte" name="kof2k_c7.rom" offset="0x3000000" size="0x800000" crc="7da11fe4" sha1="065336cf166807acb6c8569d59d3bf37a19b0a42" />   <!-- TC5364205 -->
+				<rom loadflag="load16_byte" name="kof2k_c8.rom" offset="0x3000001" size="0x800000" crc="b1afa60b" sha1="b916184f5cfe4121752270f4f65abf35d8eb0519" />   <!-- TC5364205 -->
+			</dataarea>
+		</part>
+	</software>
 
 	<!--
 	ID-0258
@@ -8746,6 +8879,46 @@
 		</part>
 	</software>
 
+	<software name="kof2k1nd" cloneof="kof2001">
+		<description>The King of Fighters 2001</description>
+		<year>2001</year>
+		<publisher>Eolith / SNK</publisher>
+		<info name="serial" value="NGH-2621"/>
+		<info name="release" value="20020314"/>
+		<info name="alt_title" value="ザ・キング・オブ・ファイターズ 2001"/>
+		<sharedfeat name="release" value="AES" />
+		<sharedfeat name="compatibility" value="MVS,AES" />
+		<part name="cart" interface="neo_cart">
+			<feature name="slot" value="cmc50_kof2001" />
+			<dataarea name="maincpu" width="16" endianness="big" size="0x500000">
+				<rom loadflag="load16_word_swap" name="262-p1-08-e0.p1" offset="0x000000" size="0x100000" crc="9381750d" sha1="dcfecd69e563ff52fe07d23c5372d0f748b07819" /> <!-- mask rom TC538200 -->
+				<rom loadflag="load16_word_swap" name="262-p2-08-e0.sp2" offset="0x100000" size="0x400000" crc="8e0d8329" sha1="10dcc1baf0aaf1fc84c4d856bca6bcff85aed2bc" />    <!-- mask rom TC5332205 -->
+			</dataarea>
+			<dataarea name="fixed" size="0x20000">
+				<rom offset="0x000000" size="0x020000" name="kf2k1_s1.rom" />
+			</dataarea>
+				<!-- Encrypted -->
+			<dataarea name="audiocrypt" size="0x80000">
+				<rom offset="0x00000" size="0x40000" name="265-262-m1.m1" crc="a7f8119f" sha1="71805b39b8b09c32425cf39f9de59b2f755976c2" /> <!-- mask rom TC532000 -->
+			</dataarea>
+			<dataarea name="ymsnd" size="0x1000000">
+				<rom name="262-v1-08-e0.v1" offset="0x000000" size="0x400000" crc="83d49ecf" sha1="2f2c116e45397652e77fcf5d951fa5f71b639572" /> <!-- mask rom TC5332204 -->
+				<rom name="262-v2-08-e0.v2" offset="0x400000" size="0x400000" crc="003f1843" sha1="bdd58837ad542548bd4053c262f558af88e3b989" /> <!-- mask rom TC5332204 -->
+				<rom name="262-v3-08-e0.v3" offset="0x800000" size="0x400000" crc="2ae38dbe" sha1="4e82b7dd3b899d61907620517a5a27bdaba0725d" /> <!-- mask rom TC5332204 -->
+				<rom name="262-v4-08-e0.v4" offset="0xc00000" size="0x400000" crc="26ec4dd9" sha1="8bd68d95a2d913be41a51f51e48dbe3bff5924fb" /> <!-- mask rom TC5332204 -->
+			</dataarea>
+			<dataarea name="sprites" size="0x4000000">
+				<rom loadflag="load16_byte" name="kf2k1_c1.rom" offset="0x000000" size="0x800000" crc="99cc785a" sha1="374f0674871d0196fa274aa6c5956d7b3848d5da" />  <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="kf2k1_c2.rom" offset="0x000001" size="0x800000" crc="50368cbf" sha1="5d9e206e98e0b0c7735b72ea46b45058fdec2352" />  <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="kf2k1_c3.rom" offset="0x1000000" size="0x800000" crc="fb14ff87" sha1="445a8db2fc69eff54a252700f2d3a89244c58e75" /> <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="kf2k1_c4.rom" offset="0x1000001" size="0x800000" crc="4397faf8" sha1="6752b394f6647502a649a3e62bd3442f936b733e" /> <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="kf2k1_c5.rom" offset="0x2000000" size="0x800000" crc="91f24be4" sha1="88190c41f7d4a0f4b1982149fc9acfc640af498d" /> <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="kf2k1_c6.rom" offset="0x2000001" size="0x800000" crc="a31e4403" sha1="5cd1a14703aa58810e2377dfb7353c61e9dc9c1f" /> <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="kf2k1_c7.rom" offset="0x3000000" size="0x800000" crc="54d9d1ec" sha1="80c3a8ec39130dd5d3da561f287709da6b8abcf4" /> <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="kf2k1_c8.rom" offset="0x3000001" size="0x800000" crc="59289a6b" sha1="ddfce7c85b2a144975db5bb14b4b51aaf881880e" /> <!-- mask rom TC5364205 -->
+			</dataarea>
+		</part>
+	</software>
 
 	<!--
 	ID-0263
@@ -8772,7 +8945,6 @@
 				<rom loadflag="load16_word_swap" name="263-p2.sp2" offset="0x100000" size="0x400000" crc="fdb7aed8" sha1="dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3" />  <!-- mask rom TC5332205 -->
 			</dataarea>
 			<dataarea name="fixed" size="0x80000">
-				<!-- The Encrypted Boards do _not_ have an s1 rom, data for it comes from the Cx ROMs -->
 				<rom value="0" size="0x80000" offset="0x000000" loadflag="fill" />
 			</dataarea>
 				<!-- Encrypted -->
@@ -8792,6 +8964,46 @@
 				<rom loadflag="load16_byte" name="263-c4.c4" offset="0x1000001" size="0x800000" crc="942cfb44" sha1="d9b46c71726383c4581fb042e63897e5a3c92d1b" />   <!-- mask rom TC5364205 -->
 				<rom loadflag="load16_byte" name="263-c5.c5" offset="0x2000000" size="0x800000" crc="a748854f" sha1="2611bbedf9b5d8e82c6b2c99b88f842c46434d41" />   <!-- mask rom TC5364205 -->
 				<rom loadflag="load16_byte" name="263-c6.c6" offset="0x2000001" size="0x800000" crc="5c8ba116" sha1="6034db09c8706d4ddbcefc053efbc47a0953eb92" />   <!-- mask rom TC5364205 -->
+			</dataarea>
+		</part>
+	</software>
+
+	<software name="mslug4nd" cloneof="mslug4">
+		<description>Metal Slug 4 (NGM-2630)</description>
+		<year>2002</year>
+		<publisher>Mega / Playmore</publisher>
+		<info name="serial" value="NGM-2630"/>
+		<info name="release" value="20020327"/>
+		<info name="alt_title" value="メタルスラッグ4"/>
+		<sharedfeat name="release" value="MVS" />
+		<sharedfeat name="compatibility" value="MVS,AES" />
+		<part name="cart" interface="neo_cart">
+			<feature name="slot" value="pcm2_mslug4" />
+			<!-- These carts were manufactured by Mega Enterprise, not SNK. -->
+			<dataarea name="maincpu" width="16" endianness="big" size="0x500000">
+				<rom loadflag="load16_word_swap" name="263-p1.p1" offset="0x000000" size="0x100000" crc="27e4def3" sha1="a08785e8145981bb6b5332a3b2df7eb321253cca" />   <!-- mask rom TC538200 -->
+				<rom loadflag="load16_word_swap" name="263-p2.sp2" offset="0x100000" size="0x400000" crc="fdb7aed8" sha1="dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3" />  <!-- mask rom TC5332205 -->
+			</dataarea>
+			<dataarea name="fixed" size="0x80000">
+				<rom value="0" size="0x80000" offset="0x000000" loadflag="fill" />
+			</dataarea>
+				<!-- Encrypted -->
+			<dataarea name="audiocrypt" size="0x80000">
+				<rom offset="0x00000" size="0x20000" name="263-m1.m1" crc="46ac8228" sha1="5aeea221050c98e4bb0f16489ce772bf1c80f787" /> <!-- mask rom TC531001 -->
+			</dataarea>
+			<dataarea name="ymsnd" size="0x1000000">
+				<!-- Encrypted -->
+				<rom name="263-v1.v1" offset="0x000000" size="0x800000" crc="01e9b9cd" sha1="0b045c2999449f7dab5ae8a42e957d5b6650431e" />   <!-- mask rom TC5364205 -->
+				<rom name="263-v2.v2" offset="0x800000" size="0x800000" crc="4ab2bf81" sha1="77ccfa48f7e3daddef5fe5229a0093eb2f803742" />   <!-- mask rom TC5364205 -->
+			</dataarea>
+			<dataarea name="sprites" size="0x3000000">
+				<!-- Encrypted -->
+				<rom loadflag="load16_byte" name="ms4n_c1.rom" offset="0x000000" size="0x800000" crc="84865f8a" sha1="34467ada896eb7c7ca58658bf2a932936d8b632c" />    <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="ms4n_c2.rom" offset="0x000001" size="0x800000" crc="81df97f2" sha1="2b74493b8ec8fd49216a627aeb3db493f76124e3" />    <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="ms4n_c3.rom" offset="0x1000000" size="0x800000" crc="1a343323" sha1="bbbb5232bba538c277ce2ee02e2956ca2243b787" />   <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="ms4n_c4.rom" offset="0x1000001" size="0x800000" crc="942cfb44" sha1="d9b46c71726383c4581fb042e63897e5a3c92d1b" />   <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="ms4n_c5.rom" offset="0x2000000" size="0x800000" crc="a748854f" sha1="2611bbedf9b5d8e82c6b2c99b88f842c46434d41" />   <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="ms4n_c6.rom" offset="0x2000001" size="0x800000" crc="5c8ba116" sha1="6034db09c8706d4ddbcefc053efbc47a0953eb92" />   <!-- mask rom TC5364205 -->
 			</dataarea>
 		</part>
 	</software>
@@ -8883,6 +9095,47 @@
 				<rom loadflag="load16_byte" name="264-c6.c6" offset="0x2000001" size="0x800000" crc="847d5c7d" sha1="a2ce03f6302edf81f2645de9ec61df1a281ddd78" />   <!-- mask rom TC5364205 -->
 				<rom loadflag="load16_byte" name="264-c7.c7" offset="0x3000000" size="0x800000" crc="231d681e" sha1="87836e64dc816f8bf1c834641535ea96baacc024" />   <!-- mask rom TC5364205 -->
 				<rom loadflag="load16_byte" name="264-c8.c8" offset="0x3000001" size="0x800000" crc="c5edb5c4" sha1="253378c8739daa5da4edb15eff7050820b2b3755" />   <!-- mask rom TC5364205 -->
+			</dataarea>
+		</part>
+	</software>
+
+	<software name="rotdnd" cloneof="rotd">
+		<description>Rage of the Dragons (NGM-2640?)</description>
+		<year>2002</year>
+		<publisher>Evoga / Playmore</publisher>
+		<info name="serial" value="NGM-2640?"/>
+		<info name="release" value="20020606"/>
+		<info name="alt_title" value="レイジ・オブ・ザ・ドラゴンズ"/>
+		<sharedfeat name="release" value="MVS" />
+		<sharedfeat name="compatibility" value="MVS,AES" />
+		<part name="cart" interface="neo_cart">
+			<feature name="slot" value="pcm2_rotd" />
+			<dataarea name="maincpu" width="16" endianness="big" size="0x800000">
+				<rom loadflag="load16_word_swap" name="264-p1.p1" offset="0x000000" size="0x800000" crc="b8cc969d" sha1="4f2205b4bdd32dd1522106ef4df10ac0eb1b852d" />   <!-- mask rom TC5364205 -->
+			</dataarea>
+			<dataarea name="fixed" size="0x20000">
+				<!-- The Encrypted Boards do _not_ have an s1 rom, data for it comes from the Cx ROMs -->
+				<rom value="0" size="0x20000" offset="0x000000" loadflag="fill" />
+			</dataarea>
+				<!-- Encrypted -->
+			<dataarea name="audiocrypt" size="0x80000">
+				<rom offset="0x00000" size="0x20000" name="264-m1.m1" crc="4dbd7b43" sha1="6b63756b0d2d30bbf13fbd219833c81fd060ef96" /> <!-- mask rom 27c010 -->
+			</dataarea>
+			<dataarea name="ymsnd" size="0x1000000">
+				<!-- Encrypted -->
+				<rom name="264-v1.v1" offset="0x000000" size="0x800000" crc="fa005812" sha1="73723126dab5a640ac11955ed6da1bf7a91394f5" />   <!-- mask rom TC5364205 -->
+				<rom name="264-v2.v2" offset="0x800000" size="0x800000" crc="c3dc8bf0" sha1="a105e37262d9500a30fb8a5dac05aa4fab2562a3" />   <!-- mask rom TC5364205 -->
+			</dataarea>
+			<dataarea name="sprites" size="0x4000000">
+				<!-- Encrypted -->
+				<rom loadflag="load16_byte" name="rodn_c1.rom" offset="0x000000" size="0x800000" crc="4f148fee" sha1="0821463765fad8fbd0dfbbabb7807337d0333719" />    <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="rodn_c2.rom" offset="0x000001" size="0x800000" crc="7cf5ff72" sha1="ccb2f94bce943576d224cb326806942426d25584" />    <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="rodn_c3.rom" offset="0x1000000" size="0x800000" crc="64d84c98" sha1="8faf153f465ce6fb7770b27a7ce63caf11dd4086" />   <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="rodn_c4.rom" offset="0x1000001" size="0x800000" crc="2f394a95" sha1="82347e8f2b48b0522d7d91fd3f372d5768934ab2" />   <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="rodn_c5.rom" offset="0x2000000" size="0x800000" crc="6b99b978" sha1="8fd0a60029b41668f9e1e3056edd3c90f62efa83" />   <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="rodn_c6.rom" offset="0x2000001" size="0x800000" crc="847d5c7d" sha1="a2ce03f6302edf81f2645de9ec61df1a281ddd78" />   <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="rodn_c7.rom" offset="0x3000000" size="0x800000" crc="231d681e" sha1="87836e64dc816f8bf1c834641535ea96baacc024" />   <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="rodn_c8.rom" offset="0x3000001" size="0x800000" crc="c5edb5c4" sha1="253378c8739daa5da4edb15eff7050820b2b3755" />   <!-- mask rom TC5364205 -->
 			</dataarea>
 		</part>
 	</software>
@@ -8980,6 +9233,47 @@
 		</part>
 	</software>
 
+	<software name="kof2k2nd" cloneof="kof2002">
+		<description>The King of Fighters 2002 (NGM-2650 ~ NGH-2650)</description>
+		<year>2002</year>
+		<publisher>Eolith / Playmore</publisher>
+		<info name="serial" value="NGM-2650 (MVS), NGM-2650 (AES)"/>
+		<info name="release" value="20021010 (MVS), 20021219 (AES)"/>
+		<info name="alt_title" value="ザ・キング・オブ・ファイターズ 2002"/>
+		<sharedfeat name="release" value="MVS,AES" />
+		<sharedfeat name="compatibility" value="MVS,AES" />
+		<part name="cart" interface="neo_cart">
+			<feature name="slot" value="k2k2_kof2k2" />
+			<dataarea name="maincpu" width="16" endianness="big" size="0x500000">
+				<rom loadflag="load16_word_swap" name="265-p1.p1" offset="0x000000" size="0x100000" crc="9ede7323" sha1="ad9d45498777fda9fa58e75781f48e09aee705a6" />   <!-- mask rom TC538200 -->
+				<rom loadflag="load16_word_swap" name="265-p2.sp2" offset="0x100000" size="0x400000" crc="327266b8" sha1="98f445cc0a94f8744d74bca71cb420277622b034" />  <!-- mask rom TC5332205 -->
+			</dataarea>
+			<dataarea name="fixed" size="0x20000">
+				<!-- The Encrypted Boards do _not_ have an s1 rom, data for it comes from the Cx ROMs -->
+				<rom value="0" size="0x20000" offset="0x000000" loadflag="fill" />
+			</dataarea>
+				<!-- Encrypted -->
+			<dataarea name="audiocrypt" size="0x80000">
+				<rom offset="0x00000" size="0x20000" name="265-m1.m1" crc="85aaa632" sha1="744fba4ca3bc3a5873838af886efb97a8a316104" /> <!-- mask rom TC531001 -->
+			</dataarea>
+			<dataarea name="ymsnd" size="0x1000000">
+				<!-- Encrypted -->
+				<rom name="265-v1.v1" offset="0x000000" size="0x800000" crc="15e8f3f5" sha1="7c9e6426b9fa6db0158baa17a6485ffce057d889" />   <!-- mask rom TC5364205 -->
+				<rom name="265-v2.v2" offset="0x800000" size="0x800000" crc="da41d6f9" sha1="a43021f1e58947dcbe3c8ca5283b20b649f0409d" />   <!-- mask rom TC5364205 -->
+			</dataarea>
+			<dataarea name="sprites" size="0x4000000">
+				<!-- Encrypted -->
+				<rom loadflag="load16_byte" name="kf2k2_c1.rom" offset="0x000000" size="0x800000" crc="2b65a656" sha1="9c46d8cf5b1ef322db442ac6a9b9406ab49206c5" />    <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="kf2k2_c2.rom" offset="0x000001" size="0x800000" crc="adf18983" sha1="150cd4a5e51e9df88688469d2ea7675c2cf3658a" />    <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="kf2k2_c3.rom" offset="0x1000000" size="0x800000" crc="875e9fd7" sha1="28f52d56192d48bbc5dc3c97abf456bd34a58cbd" />   <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="kf2k2_c4.rom" offset="0x1000001" size="0x800000" crc="2da13947" sha1="f8d79ec2c236aa3d3648a4f715676899602122c1" />   <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="kf2k2_c5.rom" offset="0x2000000" size="0x800000" crc="61bd165d" sha1="b3424db84bc683d858fb635bc42728f9cdd89caf" />   <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="kf2k2_c6.rom" offset="0x2000001" size="0x800000" crc="03fdd1eb" sha1="6155c7e802062f4eafa27e414c4e73ee59b868bf" />   <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="kf2k2_c7.rom" offset="0x3000000" size="0x800000" crc="1a2749d8" sha1="af7d9ec1d576209826fa568f676bbff92f6d6ddd" />   <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="kf2k2_c8.rom" offset="0x3000001" size="0x800000" crc="ab0bb549" sha1="d23afb60b7f831f7d4a98ad3c4a00ee19877a1ce" />   <!-- mask rom TC5364205 -->
+			</dataarea>
+		</part>
+	</software>
 
 	<!--
 	ID-0266
@@ -9027,6 +9321,48 @@
 				<rom loadflag="load16_byte" name="266-c6.c6" offset="0x2000001" size="0x800000" crc="281cb939" sha1="bdb7766cfde581ccfaee2be7fe48445f360a2301" />   <!-- mask rom TC5364205 -->
 				<rom loadflag="load16_byte" name="266-c7.c7" offset="0x3000000" size="0x800000" crc="4b71f780" sha1="d5611a6f6b730db58613b48f2b0174661ccfb7bb" />   <!-- mask rom TC5364205 -->
 				<rom loadflag="load16_byte" name="266-c8.c8" offset="0x3000001" size="0x800000" crc="29873d33" sha1="dc77f129ed49b8d40d0d4241feef3f6c2f19a987" />   <!-- mask rom TC5364205 -->
+			</dataarea>
+		</part>
+	</software>
+
+	<software name="matrimnd">
+		<description>Matrimelee / Shin Gouketsuji Ichizoku Toukon (NGM-2660 ~ NGH-2660)</description>
+		<year>2002</year>
+		<publisher>Noise Factory / Atlus</publisher>
+		<info name="serial" value="NGM-2660 (MVS), NGM-2660 (AES)"/>
+		<info name="release" value="20030320 (MVS), 20030529 (AES)"/>
+		<info name="alt_title" value="新・豪血寺一族 闘婚"/>
+		<sharedfeat name="release" value="MVS,AES" />
+		<sharedfeat name="compatibility" value="MVS,AES" />
+		<part name="cart" interface="neo_cart">
+			<feature name="slot" value="k2k2_matrim" />
+			<dataarea name="maincpu" width="16" endianness="big" size="0x500000">
+				<rom loadflag="load16_word_swap" name="266-p1.p1" offset="0x000000" size="0x100000" crc="5d4c2dc7" sha1="8d723b0d28ec344eef26009b361a2b97d300dd51" />   <!-- mask rom TC538200 -->
+				<rom loadflag="load16_word_swap" name="266-p2.sp2" offset="0x100000" size="0x400000" crc="a14b1906" sha1="1daa14d73512f760ef569b06f9facb279437d1db" />  <!-- mask rom TC5332205 -->
+			</dataarea>
+			<dataarea name="fixed" size="0x80000">
+				<!-- The Encrypted Boards do _not_ have an s1 rom, data for it comes from the Cx ROMs -->
+				<rom value="0" size="0x80000" offset="0x000000" loadflag="fill" />
+			</dataarea>
+				<!-- Encrypted -->
+			<dataarea name="audiocrypt" size="0x80000">
+				<rom offset="0x00000" size="0x20000" name="266-m1.m1" crc="456c3e6c" sha1="5a07d0186198a18d2dda1331093cf29b0b9b2984" /> <!-- mask rom TC531001 -->
+			</dataarea>
+			<dataarea name="ymsnd" size="0x1000000">
+				<!-- Encrypted -->
+				<rom name="266-v1.v1" offset="0x000000" size="0x800000" crc="a4f83690" sha1="200d683d8c30ebc6d0ed331aa5bbba39b4e07160" />   <!-- mask rom TC5364205 -->
+				<rom name="266-v2.v2" offset="0x800000" size="0x800000" crc="d0f69eda" sha1="9d7e98976ad433ed8a35d7afffa38130444ba7db" />   <!-- mask rom TC5364205 -->
+			</dataarea>
+			<dataarea name="sprites" size="0x4000000">
+				<!-- Encrypted -->
+				<rom loadflag="load16_byte" name="matr_c1.rom" offset="0x000000" size="0x800000" crc="505f4e30" sha1="f22b6f76fc0cad963555dc89d072967c8dc8b79a" />    <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="matr_c2.rom" offset="0x000001" size="0x800000" crc="3cb57482" sha1="dab15bc24391f9a5173de76af48b612fb9636ccf" />    <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="matr_c3.rom" offset="0x1000000" size="0x800000" crc="f1cc6ad0" sha1="66c1cccc0332ffd2d3064f06330c41f95ca09ced" />   <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="matr_c4.rom" offset="0x1000001" size="0x800000" crc="45b806b7" sha1="c2bb866fded53d62fad0fc88d89d5e7d4cb1894f" />   <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="matr_c5.rom" offset="0x2000000" size="0x800000" crc="9a15dd6b" sha1="194a6973a7a9e3847efe1bdbaeaeb16e74aff2dd" />   <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="matr_c6.rom" offset="0x2000001" size="0x800000" crc="281cb939" sha1="bdb7766cfde581ccfaee2be7fe48445f360a2301" />   <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="matr_c7.rom" offset="0x3000000" size="0x800000" crc="4b71f780" sha1="d5611a6f6b730db58613b48f2b0174661ccfb7bb" />   <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="matr_c8.rom" offset="0x3000001" size="0x800000" crc="29873d33" sha1="dc77f129ed49b8d40d0d4241feef3f6c2f19a987" />   <!-- mask rom TC5364205 -->
 			</dataarea>
 		</part>
 	</software>
@@ -9151,6 +9487,47 @@
 				<rom loadflag="load16_byte" name="268-c6c.c6" offset="0x2000001" size="0x800000" crc="010a831b" sha1="aec140661e3ae35d264df416478ba15188544d91" />  <!-- mask rom TC5364205 -->
 				<rom loadflag="load16_byte" name="268-c7c.c7" offset="0x3000000" size="0x800000" crc="6d72a969" sha1="968dd9a4d1209b770b9b85ea6532fa24d262a262" />  <!-- mask rom TC5364205 -->
 				<rom loadflag="load16_byte" name="268-c8c.c8" offset="0x3000001" size="0x800000" crc="551d720e" sha1="ebf69e334fcaba0fda6fd432fd0970283a365d12" />  <!-- mask rom TC5364205 -->
+			</dataarea>
+		</part>
+	</software>
+
+	<software name="mslug5nd" cloneof="mslug5">
+		<description>Metal Slug 5 (NGM-2680)</description>
+		<year>2003</year>
+		<publisher>SNK Playmore</publisher>
+		<info name="serial" value="NGM-2680"/>
+		<info name="release" value="20031114"/>
+		<info name="alt_title" value="メタルスラッグ5"/>
+		<sharedfeat name="release" value="MVS" />
+		<sharedfeat name="compatibility" value="MVS,AES" />
+		<part name="cart" interface="neo_cart">
+			<feature name="slot" value="pvc_mslug5" />
+			<dataarea name="maincpu" width="16" endianness="big" size="0x800000">
+				<rom loadflag="load32_word_swap" name="268-p1cr.p1" offset="0x000000" size="0x400000" crc="d0466792" sha1="880819933d997fab398f91061e9dbccb959ae8a1" /> <!-- mask rom TC5332205 -->
+				<rom loadflag="load32_word_swap" name="268-p2cr.p2" offset="0x000002" size="0x400000" crc="fbf6b61e" sha1="9ec743d5988b5e3183f37f8edf45c72a8c0c893e" /> <!-- mask rom TC5332205 -->
+			</dataarea>
+			<dataarea name="fixed" size="0x20000">
+				<rom name="ms5n_s1.rom" size="0x20000" offset="0x000000" />
+			</dataarea>
+				<!-- Encrypted -->
+			<dataarea name="audiocrypt" size="0x80000">
+				<rom offset="0x00000" size="0x80000" name="268-m1.m1" crc="4a5a6e0e" sha1="df0f660f2465e1db7be5adfcaf5e88ad61a74a42" /> <!-- mask rom TC534000 -->
+			</dataarea>
+			<dataarea name="ymsnd" size="0x1000000">
+				<!-- Encrypted -->
+				<rom name="268-v1c.v1" offset="0x000000" size="0x800000" crc="ae31d60c" sha1="c42285cf4e52fea74247860813e826df5aa7600a" />  <!-- mask rom TC5364205 -->
+				<rom name="268-v2c.v2" offset="0x800000" size="0x800000" crc="c40613ed" sha1="af889570304e2867d7dfea1e94e388c06249fb67" />  <!-- mask rom TC5364205 -->
+			</dataarea>
+			<dataarea name="sprites" size="0x4000000">
+				<!-- Encrypted -->
+				<rom loadflag="load16_byte" name="ms5n_c1.rom" offset="0x000000" size="0x800000" crc="ab7c389a" sha1="025a188de589500bf7637fa8e7a37ab24bf4312e" />   <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="ms5n_c2.rom" offset="0x000001" size="0x800000" crc="3560881b" sha1="493d218c92290b4770024d6ee2917c4022753b07" />   <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="ms5n_c3.rom" offset="0x1000000" size="0x800000" crc="3af955ea" sha1="cf36b6ae9b0d12744b17cb7a928399214de894be" />  <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="ms5n_c4.rom" offset="0x1000001" size="0x800000" crc="c329c373" sha1="5073d4079958a0ef5426885af2c9e3178f37d5e0" />  <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="ms5n_c5.rom" offset="0x2000000" size="0x800000" crc="959c8177" sha1="889bda7c65d71172e7d89194d1269561888fe789" />  <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="ms5n_c6.rom" offset="0x2000001" size="0x800000" crc="010a831b" sha1="aec140661e3ae35d264df416478ba15188544d91" />  <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="ms5n_c7.rom" offset="0x3000000" size="0x800000" crc="6d72a969" sha1="968dd9a4d1209b770b9b85ea6532fa24d262a262" />  <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="ms5n_c8.rom" offset="0x3000001" size="0x800000" crc="551d720e" sha1="ebf69e334fcaba0fda6fd432fd0970283a365d12" />  <!-- mask rom TC5364205 -->
 			</dataarea>
 		</part>
 	</software>
@@ -9437,6 +9814,49 @@
 				<rom loadflag="load16_byte" name="271-c6c.c6" offset="0x2000001" size="0x800000" crc="20a1164c" sha1="c9843b37612a16fc95f6851793b1cfb5d49d811d" />  <!-- mask rom TC5364205 -->
 				<rom loadflag="load16_byte" name="271-c7c.c7" offset="0x3000000" size="0x800000" crc="189aba7f" sha1="7152195a57ad36b28290810fe87ed8c206262ba9" />  <!-- mask rom TC5364205 -->
 				<rom loadflag="load16_byte" name="271-c8c.c8" offset="0x3000001" size="0x800000" crc="20ec4fdc" sha1="deb5f7ec5a090e419b9d1a6a74877bee081198e2" />  <!-- mask rom TC5364205 -->
+			</dataarea>
+		</part>
+	</software>
+
+	<software name="kof2k3nd" cloneof="kof2003">
+		<description>The King of Fighters 2003 (NGM-2710, Export)</description>
+		<year>2003</year>
+		<publisher>SNK Playmore</publisher>
+		<info name="serial" value="NGM-2710"/>
+		<info name="release" value="20031212"/>
+		<info name="alt_title" value="ザ・キング・オブ・ファイターズ 2003"/>
+		<sharedfeat name="release" value="MVS" />
+		<sharedfeat name="compatibility" value="MVS,AES" />
+		<part name="cart" interface="neo_cart">
+			<feature name="slot" value="pvc_kf2k3" />
+			<dataarea name="maincpu" width="16" endianness="big" size="0x900000">
+				<rom loadflag="load32_word_swap" name="271-p1c.p1" offset="0x000000" size="0x400000" crc="530ecc14" sha1="812cf7e9902af3f5e9e330b7c05c2171b139ad2b" />  <!-- mask rom TC5332205 -->
+				<rom loadflag="load32_word_swap" name="271-p2c.p2" offset="0x000002" size="0x400000" crc="fd568da9" sha1="46364906a1e81dc251117e91a1a7b43af1373ada" />  <!-- mask rom TC5332205 -->
+				<rom loadflag="load16_word_swap" name="271-p3c.p3" offset="0x800000" size="0x100000" crc="aec5b4a9" sha1="74087f785590eda5898ce146029818f86ced42b6" />  <!-- mask rom TC538200 -->
+			</dataarea>
+			<dataarea name="fixed" size="0x80000">
+				<!-- The Encrypted Boards do _not_ have an s1 rom, data for it comes from the Cx ROMs -->
+				<rom value="0" size="0x80000" offset="0x000000" loadflag="fill" />
+			</dataarea>
+				<!-- Encrypted -->
+			<dataarea name="audiocrypt" size="0x80000">
+				<rom offset="0x00000" size="0x80000" name="271-m1c.m1" crc="f5515629" sha1="7516bf1b0207a3c8d41dc30c478f8d8b1f71304b" />    <!-- mask rom TC534000 -->
+			</dataarea>
+			<dataarea name="ymsnd" size="0x1000000">
+				<!-- Encrypted -->
+				<rom name="271-v1c.v1" offset="0x000000" size="0x800000" crc="ffa3f8c7" sha1="7cf4a933973ca23b7f87c81151d8659e6ec4bd20" />  <!-- mask rom TC5364205 -->
+				<rom name="271-v2c.v2" offset="0x800000" size="0x800000" crc="5382c7d1" sha1="1bf999705eda80ba1e7b0d6bdd010d9bfb18bd76" />  <!-- mask rom TC5364205 -->
+			</dataarea>
+			<dataarea name="sprites" size="0x4000000">
+				<!-- Encrypted -->
+				<rom loadflag="load16_byte" name="kf2k3_c1.rom" offset="0x000000" size="0x800000" crc="b1dc25d0" sha1="50adc3c60d5b4b3abd10a49db2267306c6dbd772" />   <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="kf2k3_c2.rom" offset="0x000001" size="0x800000" crc="d5362437" sha1="66db36522dc09106388c707252df9fe1c88b4856" />   <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="kf2k3_c3.rom" offset="0x1000000" size="0x800000" crc="0a1fbeab" sha1="9fe30d36ba98d00fda010832ff2f27783dd577c1" />  <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="kf2k3_c4.rom" offset="0x1000001" size="0x800000" crc="87b19a0c" sha1="b72a8e7d9124ce859b5149bb4381ba481c161ea5" />  <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="kf2k3_c5.rom" offset="0x2000000" size="0x800000" crc="704ea371" sha1="e75b80422f0d72eac826f8ffadf79efeccaab124" />  <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="kf2k3_c6.rom" offset="0x2000001" size="0x800000" crc="20a1164c" sha1="c9843b37612a16fc95f6851793b1cfb5d49d811d" />  <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="kf2k3_c7.rom" offset="0x3000000" size="0x800000" crc="189aba7f" sha1="7152195a57ad36b28290810fe87ed8c206262ba9" />  <!-- mask rom TC5364205 -->
+				<rom loadflag="load16_byte" name="kf2k3_c8.rom" offset="0x3000001" size="0x800000" crc="20ec4fdc" sha1="deb5f7ec5a090e419b9d1a6a74877bee081198e2" />  <!-- mask rom TC5364205 -->
 			</dataarea>
 		</part>
 	</software>
