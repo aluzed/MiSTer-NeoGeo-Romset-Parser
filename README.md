@@ -1,11 +1,14 @@
 # MiSTer-NeoGeo-Romset-Parser
 
-Extracts the relevant NeoGeo rom files (p-roms, s-roms and c-roms) from a zipped NeoGeo romset and generates
-the romsets.xml file which is needed by the NeoGeo MiSTer core.
+Export NeoGeo rom files from a zipped NeoGeo romset and generates the romsets.xml file which is needed by the NeoGeo MiSTer core.
 
 The source romset needs to be a non-merged or merged set. If a merged set is used then only the parent rom will get extracted.
 
 Program roms in the .bin format are renamed so they can be visible inside the NeoGeo MiSTer core's OSD.
+
+# Caution
+
+Mister FPGA cannot use bootleg or encrypted rom file... Update is comming for those special roms.
 
 ## Tools Included
 

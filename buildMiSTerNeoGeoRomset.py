@@ -12,6 +12,75 @@ import xml.etree.ElementTree as ET
 from xml.dom import minidom
 import shutil
 
+encrypted_roms = {
+  "kof98": "kof98h", # Initial kof 98 is encrypted
+  "kof98k": "kof98h", # Kof 98 korean
+  "kof98a": "kof98h", # Kof 98 alt
+  "kof98ka": "kof98h", # Kof 98 korean set 2
+  "kof99": "kof99nd", # Kof 99 initial
+  "kof99e": "kof99nd",  # Kof 99 earlier
+  "kof99h": "kof99nd",  # Kof 99 set 2
+  "kof99k": "kof99nd",  # Kof 99 korean
+  "kof99p": "kof99nd",  # Kof 99 prototype
+  "kof2000": "kof2knd", # Kof 2000 is encrypted
+  "kof2000n": "kof2knd", # Kof 2000n is still encrypted
+  "kof2001": "kof2k1nd", # Kof 2001 is encrypted
+  "kof2001h": "kof2k1nd",  # Kof 2001 alternate
+  "kof2002": "kof2k2nd", # Kof 2002 is encrypted
+  "kof2002b": "kof2k2nd", # Kof 2002 bootleg
+  "kf2k2pls": "kof2k2nd",  # Kof 2002 plus hack
+  "kf2k2pla": "kof2k2nd",  # Kof 2002 plus alt hack
+  "kf2k2mp": "kof2k2nd",  # Kof 2002 magic plus hack
+  "kf2k2mp2": "kof2k2nd",  # Kof 2002 magic plus 2 hack
+  "kof2003": "kof2k3nd",  # Kof 2003 initial
+  "kof2003h": "kof2k3nd",  # Kof 2003 set 2
+  "kf2k3bl": "kof2k3nd",  # Kof 2003 bootleg
+  "kf2k3pcb": "kof2k3nd",  # Kof 2003 Jamma
+  "kf2k3pl": "kof2k3nd",  # Kof 2004 hack
+  "kf2k3upl": "kof2k3nd",  # Kof 2004 ex hack
+  "kof2k4se": "kof2k3nd",  # Kof 2004 spe hack
+  "kof10th": "kof2k3nd",  # Kof 10th anniversary hack
+  "kf10thep": "kof2k3nd",  # Kof 10th anniversary extra plus hack
+  "svc": "svcnd", # SNK vs Capcom
+  "svcpcb": "svcnd", # SNK vs Capcom Jamma
+  "svcpcba": "svcnd", # SNK vs Capcom Jamma set 2
+  "svcboot": "svcnd", # SNK vs Capcom Bootleg
+  "svcplus": "svcnd", # SNK vs Capcom Plus hack
+  "svcplusa": "svcnd", # SNK vs Capcom Plus set 2 hack
+  "svcsplus": "svcnd", # SNK vs Capcom Super plus hack
+  "samsho5": "samsh5nd", # Samurai Shodown 5 intial
+  "samsho5h": "samsh5nd", # Samurai Shodown alt
+  "samsho5b": "samsh5nd", # Samurai Shodown 5 bootleg
+  "samsh5sp": "samsh5nd",  # Samurai Shodown 5 Spe
+  "samsh5spho": "samsh5nd",  # Samurai Shodown 5 Spe alt
+  "samsh5sph": "samsh5nd",  # Samurai Shodown 5 Spe less censored
+  "rotd": "rotdnd",  # Rage of the dragons initial
+  "rotdh": "rotdnd",  # Rage of the dragons alt
+  "mslug3": "mslug3nd",  # Metal Slug 3 initial
+  "mslug3h": "mslug3nd", # Metal Slug 3 set 2
+  "mslug3b6": "mslug3", # Metal Slug 6 hack
+  "mslug5": "mslug5nd",  # Metal Slug 5 initial
+  "ms5plus": "mslug5nd",  # Metal Slug 5 plus hack
+  "mslug5h": "mslug5nd",  # Metal Slug 5 set 2
+  "ms5pcb": "mslug5nd",  # Metal Slug 5 Jamma
+  "mslug4": "mslug4nd",  # Metal Slug 4 initial
+  "ms4plus": "mslug4nd",  # Metal Slug 4 plus hack
+  "mslug4h": "mslug4nd",  # Metal Slug 4 set 2
+  "matrim": "matrimnd",  # Matrimele initial
+  "matrimbl": "matrimnd",  # Matrimele bootleg
+  "garou": "garound", # Garou initial
+  "garouh": "garound", # Garou set 2
+  "garoup": "garound",  # Garou prototype
+  "garoubl": "garound",  # Garou bootleg
+  "garoun": "garound"  # Garou decrypted C
+}
+
+def check_if_encrypted(rom_name):
+  if rom_name in encrypted_roms:
+    print("Error")
+    print(rom_name + " is encrypted, please use : " + encrypted_roms[rom_name] + " instead, and remove " + rom_name + " folder.")
+    exit(1)
+
 def parse_args():
 	parser = argparse.ArgumentParser(description="extract relevant neogeo rom files and generates romsets.xml file")
 	parser.add_argument("-i", "--input_folder", dest="source_folder", required=False, default=".", help="set source folder")
@@ -45,13 +114,13 @@ def parse_software(db_entry):
 				info = {'type': data.get('name'), 'name': rom.get('name'), 'size': rom.get('size'), 'offset': rom.get('offset'), 'flag': False}
 			
 			if  info is not None:
-				elementFound = False
+				element_found = False
 				for item in rom_infos:
 					if isinstance(item, dict):
 						if (item['name'] == info['name']):
-							elementFound = True
+							element_found = True
 				
-				if elementFound is False:
+				if element_found is False:
 					rom_infos.append(info)
 
 	return rom_infos
@@ -115,76 +184,58 @@ def copy_dir_software(output_folder, romfiles, dirpath, dirname):
 		os.makedirs(output_folder)
 
 def get_sprite_index_by_offset(offset):
-	index = 64
 
-	if offset == "0x000000":
-		index = 64
-	elif offset == "0x000001":
-		index = 65
-	elif offset == "0x200000":
-		index = 66
-	elif offset == "0x200001":
-		index = 67
-	elif offset == "0x400000":
-		index = 72
-	elif offset == "0x400001":
-		index = 73
-	elif offset == "0x800000":
-		index = 80
-	elif offset == "0x800001":
-		index = 81
-	elif offset == "0xc00000":
-		index = 88
-	elif offset == "0xc00001":
-		index = 89
-	elif offset == "0x1000000":
-		index = 96
-	elif offset == "0x1000001":
-		index = 97
-	elif offset == "0x1800000":
-		index = 112
-	elif offset == "0x1800001":
-		index = 113
-	elif offset == "0x2000000":
-		index = 128
-	elif offset == "0x2000001":
-		index = 129
-	elif offset == "0x3000000":
-		index = 160
-	elif offset == "0x3000001":
-		index = 161
-	else:
-		index = 9999
+  allowed_offset = {
+    '0x000000': 64,
+    '0x000001': 65,
+    '0x200000': 68,
+    '0x200001': 69,
+    '0x400000': 72,
+    '0x400001': 73,
+    '0x800000': 80,
+    '0x800001': 81,
+    '0xc00000': 88,
+    '0xc00001': 89,
+    '0x1000000': 96,
+    '0x1000001': 97,
+    '0x1800000': 112,
+    '0x1800001': 113,
+    '0x2000000': 128,
+    '0x2000001': 129,
+    '0x3000000': 160,
+    '0x3000001': 161
+  }
 
-	return index
+  index = 9999
+	
+  if offset in allowed_offset:
+    index = allowed_offset[offset]
+
+  return index
 
 def get_ymsnd_index_by_offset(offset):
-	index = 16
+  allowed_offset = {
+    '0x000000': 16,
+    '0x100000': 18,
+    '0x200000': 20,
+    '0x300000': 22,
+    '0x400000': 24,
+    '0x500000': 26,
+    '0x600000': 28,
+    '0x700000': 30,
+    '0x800000': 32,
+    '0x900000': 34,
+    '0xa00000': 36,
+    '0xb00000': 38,
+    '0xc00000': 40
+  }
 
-	if offset == "0x000000":
-		index = 16
-	elif offset== "0x100000":
-		index = 18
-	elif offset == "0x200000":
-		index = 20
-	elif offset == "0x300000":
-		index = 22
-	elif offset == "0x400000":
-		index = 24
-	elif offset == "0x500000":
-		index = 26
-	elif offset == "0x600000":
-		index = 28
-	elif offset == "0x700000":
-		index = 30
-	elif offset == "0x800000":
-		index = 32
-	elif offset == "0xc00000":
-		index = 40
-	else:
-		index = 9999
+  index = 9999
 
-	return index
+  if offset in allowed_offset:
+    index = allowed_offset[offset]
+
+  return index
 
 def generate_romsets_info(folder, software_list):
 	if not os.path.exists(folder):
@@ -206,7 +257,7 @@ def generate_romsets_info(folder, software_list):
 
 		for rom in rom_list:
 			if rom['type'] == "title":
-				romset.set('altname', rom['name'])
+				romset.set('altname', rom['name'].strip())
 			if rom['type'] == "maincpu":
 				rom_cpu_list.append(rom)
 			elif rom['type'] == "fixed":
@@ -328,7 +379,7 @@ def generate_romsets_info(folder, software_list):
                                                 'size': rom.get('size')})
             
 
-	xml_str = minidom.parseString(ET.tostring(romsets)).toprettyxml(indent="    ", encoding='utf8')
+	xml_str = minidom.parseString(ET.tostring(romsets)).toprettyxml(indent="	", encoding='utf8')
 	xml_path = os.path.join(folder, "romsets.xml")
 
 	f = open(xml_path, "w")
